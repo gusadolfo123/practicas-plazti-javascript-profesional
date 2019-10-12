@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+		<title>Media player</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="text-center my-4">Prototype</h1>
+		</div>
+		<script>
+			// namera ineficiente
+			const zelda = {
+				name: 'Zelda',
+			};
+
+			zelda.saludar = function() {
+				console.log(`Hola soy ${this.name}`);
+			};
+
+			zelda.saludar();
+
+			const link = {
+				name: 'Link',
+			};
+
+			link.saludar = function() {
+				console.log(`Hola soy ${this.name}`);
+			};
+
+			link.saludar();
+
+			// primera forma
+			function Hero(name) {
+				const hero = {
+					name: name,
+				};
+				hero.saludar = function() {
+					console.log(`Hola soy ${this.name}`);
+				};
+				return hero;
+			}
+
+			const zelda1 = Hero('Zelda');
+			zelda1.saludar();
+
+			const link1 = Hero('Link');
+			link1.saludar();
+
+			// segunda forma
+			const heroMethods = {
+				saludar: function() {
+					console.log(`Hola soy ${this.name}`);
+				},
+			};
+
+			function Hero2(name) {
+				const hero = {
+					name: name,
+				};
+
+				hero.saludar = heroMethods.saludar;
+
+				return hero;
+			}
+
+			const zelda2 = Hero2('Zelda');
+			zelda1.saludar();
+
+			const link2 = Hero2('Link');
+			link1.saludar();
+
+			// tercera forma
+			const heroMethods3 = {
+				saludar: function() {
+					console.log(`Hola soy ${this.name}`);
+				},
+			};
+
+			function Hero3(name) {
+				const hero = Object.create(heroMethods3);
+				hero.name = name;
+				return hero;
+			}
+
+			const zelda3 = Hero3('Zelda');
+			zelda3.saludar();
+
+			const link3 = Hero3('Link');
+			link3.saludar();
+
+			// cuarta forma prototipos
+			function Hero4(name) {
+				const hero = Object.create(Hero4.prototype);
+				hero.name = name;
+				return hero;
+			}
+
+			Hero4.prototype.saludar = function() {
+				console.log(`Hola que hace nombre ${this.name}`);
+			};
+
+			const zelda4 = Hero4('Zelda4');
+			zelda4.saludar();
+
+			const link4 = Hero4('Link4');
+			link4.saludar();
+
+			// azucar sintactica
+			function HeroClass(name) {
+				this.name = name;
+			}
+
+			HeroClass.prototype.saludar = function() {
+				console.log(`Heroe llamado ${this.name}`);
+			};
+
+			const zeldaClass = new HeroClass('ZeldaClass');
+			zeldaClass.saludar();
+
+			const linkClass = new HeroClass('linkClass');
+			linkClass.saludar();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+		<title>Media player</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="text-center my-4">This</h1>
+			<div class="row">
+				<button class="call-to-action">Estudiar</button>
+				<button class="call-to-action">Estudiar</button>
+				<button class="call-to-action">Estudiar</button>
+				<button class="call-to-action">Estudiar</button>
+			</div>
+		</div>
+		<script>
+			// NodeList
+			const buttons = document.getElementsByClassName('call-to-action');
+
+			// buttons.forEach(button => {
+			// 	button.onclick = () => console.log(element);
+			// });
+
+			Array.prototype.forEach.call(buttons, button => {
+				button.onclick = () => console.log(button.innerText);
+			});
+
+			const person = {
+				nombre: 'Gustavo',
+				apellido: 'Moreno',
+			};
+
+			function saludar() {
+				console.log(`Hola soy ${this.nombre} ${this.apellido}`);
+			}
+
+			// para una funcion sin argumentos
+			saludar.call(person);
+
+			// para funcion cona argumentos
+			function caminar(metros, direccion) {
+				console.log(`${this.nombre} camina ${metros} hacia ${direccion}`);
+			}
+
+			caminar.call(person, 4000, 'norte');
+
+			// Apply hace lo mismo que call pero se pasan diferente los argumentos
+			const valores = [3000, 'sur'];
+			caminar.apply(person, valores);
+
+			// Bind crea una nueva funcion con el this aplicado
+			const heroe = {
+				nombre: 'Bruce',
+				apellido: 'Wayne',
+			};
+
+			const batmanSaluda = saludar.bind(heroe);
+			batmanSaluda();
+
+			const batmanCamina = caminar.bind(heroe);
+			batmanCamina(100, 'este');
+
+			// tambien se pueden agregar los argumentos de la siguiente manera
+			const batmanCamina2 = caminar.bind(heroe, 123, 'nada');
+			batmanCamina2();
+
+			// tambien se pueden poner argumentos desde el bind y el resto en el llamado
+			const batmanCamina3 = caminar.bind(heroe, 999);
+			batmanCamina3('norte');
+		</script>
+	</body>
+</html>

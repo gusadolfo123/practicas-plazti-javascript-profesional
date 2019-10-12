@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+		<title>Media player</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="text-center my-4">Prototype</h1>
+		</div>
+		<script>
+			function Hero(name) {
+				this.name = name;
+			}
+
+			Hero.prototype.saludar = function() {
+				console.log(`Hola, soy ${this.name}`);
+			};
+
+			const zelda = new Hero('Zelda');
+			console.log(`Name: ${zelda.name}`);
+			console.log('Saludar: ', zelda.saludar);
+			console.log('Saludar: ', zelda.toString);
+
+			// hasOwnProperty verifica si eprtenece directamente a la funcion o esta heredado
+			console.log('Zelda.hasOwnProperty("name"):', zelda.hasOwnProperty('name'));
+			console.log('Zelda.hasOwnProperty("apellido"):', zelda.hasOwnProperty('apellido'));
+			console.log('Zelda.hasOwnProperty("saludar"):', zelda.hasOwnProperty('saludar'));
+
+			console.log(Object.getPrototypeOf(zelda));
+
+			// Object es el inicio de todo
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+		<title>Media player</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="text-center my-4">This</h1>
+			<div class="row">
+				<p></p>
+			</div>
+		</div>
+		<script>
+			console.log(`this: ${this}`);
+
+			function whoIsThis() {
+				return this;
+			}
+
+			console.log(`whoIsThis: ${whoIsThis()}`);
+
+			// modo stricto
+			function whoIsThisStrict() {
+				'use strict';
+				return this;
+			}
+
+			console.log(`whoIsThisStrict: ${whoIsThisStrict()}`);
+
+			// this en el contexto de un objeto
+			const person = {
+				name: 'Gustavo',
+				saludar: function() {
+					console.log(this);
+					console.log(`Hola soy ${this.name}`);
+				},
+			};
+
+			person.saludar();
+
+			const accion = person.saludar;
+
+			accion();
+
+			// this en contexto de una clase
+			function Person(name) {
+				// this = []
+				this.name = name;
+			}
+
+			Person.prototype.saludar = function() {
+				console.log(this);
+				console.log(`Hola soy ${this.name}`);
+			};
+
+			Person.llamar = function() {
+				console.log(this);
+				console.log('llamar');
+			};
+
+			const persona = new Person('Gustavo Moreno');
+			persona.saludar();
+			persona.llamar;
+		</script>
+	</body>
+</html>
